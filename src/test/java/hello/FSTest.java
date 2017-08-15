@@ -5,12 +5,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class GreeterTest {
-    private Greeting greeter = new Greeting(1,"");
+public class FSTest {
+    private FS fs = new FS("/");
 
     @Test
     public void greeterSaysHello() {
-        assertThat(greeter.sayHello(), containsString("Hello"));
-        String hola = "hola";
+        assertThat(fs.getFicheros(), containsString("bin"));
     }
 }
