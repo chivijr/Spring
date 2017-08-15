@@ -10,6 +10,10 @@ public class Greeting {
         this.content = content;
     }
 
+    public String sayHello() {
+        return "Hello world say!";
+    }
+
     public long getId() {
         return id;
     }
