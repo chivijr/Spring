@@ -2,26 +2,21 @@ package hello;
 
 import java.io.File;
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FS {
 
     private final String ruta;
-    private final List<Map<String,ArrayList<String>>> ficheros;
+    private final Map<String,Object> ficheros;
 
     public FS(String dir) {
         this.ruta = dir;
-        this.ficheros = new ArrayList<Map<String,ArrayList<String>>>();
-        ArrayList<String> listafichero = new ArrayList<String>();
+        this.ficheros = new LinkedHashMap<>();
 
         final File folder = new File("/");
         for (final File fileEntry : folder.listFiles()) {
-            listafichero.add(fileEntry.getName());
+            ficheros.put("fichero", fileEntry.getName());
         }
-        ficheros.add(listafichero);
     }
 
     public String getRuta() {

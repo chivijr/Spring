@@ -1,10 +1,10 @@
 $(document).ready(function() {
     $.ajax({
-        url: "http://localhost:8081/fs/"
+        type: "GET",
+    	dataType: "json",
+    	contentType: "application/json; charset=utf-8",
+        url: "http://localhost:8080/fs/",
     }).then(function(data) {
-    	data.ficheros.each(function (index, item){
-    		alert(item);
-    	})
-    	//$('body').append(data.ficheros);
+       $('body').append(data.ficheros);
     });
 });
