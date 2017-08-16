@@ -1,23 +1,27 @@
 package hello;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FS {
 
     private final String ruta;
-    private final List<String> ficheros;
+    private final List<Map<String,String>> ficheros;
 
     public FS(String dir) {
         this.ruta = dir;
-        this.ficheros = new ArrayList<String>();
+        this.ficheros = new ArrayList<Map<String,String>>();
+        HashMap<String,String> fichero = new HashMap<String,String>();
 
         final File folder = new File("/");
-        String fichero = "";
         for (final File fileEntry : folder.listFiles()) {
-            ficheros.add("\'/"+fileEntry.getName()+"\'");
+            String nombre=fileEntry.getName();
+            fichero.put("nombre", nombre);
+            System.out.println(fichero.values());
+            ficheros.add(fichero);
         }
     }
 
