@@ -1,21 +1,22 @@
 package hello;
 
 import java.io.File;
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
 
 public class FS {
 
     private final String ruta;
-    private final Map<String,Object> ficheros;
+    private final List<Archivo> ficheros;
 
-    public FS(String dir) {
-        this.ruta = dir;
-        this.ficheros = new LinkedHashMap<>();
+    public FS(String ruta) {
+        this.ruta = ruta;
+        this.ficheros = new LinkedList<Archivo>();
 
         final File folder = new File("/");
         for (final File fileEntry : folder.listFiles()) {
-            ficheros.put("fichero", fileEntry.getName());
+            char tipo = (fileEntry.isFile()) ? 'f' : 'd';
+            this.ficheros.add(new Archivo(ruta,fileEntry.getName(), tipo));
         }
     }
 
@@ -23,7 +24,7 @@ public class FS {
         return ruta;
     }
 
-    public String getFicheros() {
-        return ficheros.toString();
+    public List<Archivo> getFicheros() {
+        return ficheros;
     }
 }

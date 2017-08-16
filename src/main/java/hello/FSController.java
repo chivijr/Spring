@@ -1,7 +1,6 @@
 package hello;
 
 import org.springframework.web.bind.annotation.*;
-import org.springframework.http.MediaType;
 
 @RestController
 public class FSController {
