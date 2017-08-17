@@ -9,7 +9,6 @@ $.urlParam = function(name){
 }
 
 $(document).ready(function() {
-	$.urlParam('dir')
     $.ajax({
         type: "GET",
     	dataType: "json",

@@ -1,0 +1,10 @@
+#contenidotexto {
+	padding-left: 5%;
+
+}
+
+#contenido #letrero {
+	padding-left: 3%;
+	font-weight: bold;
+	text-decoration: underline;
+}
