@@ -12,8 +12,8 @@ public class FSController {
     //@ResponseBody
     @CrossOrigin(origins = "http://localhost:8081")
     @RequestMapping("/fs")
-    public FS fs(@RequestParam(value = "dir", defaultValue = "") String dir) {
-
-        return new FS("/"+dir);
+    public FS fs(@RequestParam(value = "dir", defaultValue = "/") String dir) {
+        if (dir.equals("null")) {dir = "/";}
+        return new FS(dir);
     }
 }

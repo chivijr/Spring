@@ -1,6 +1,9 @@
 package hello;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,9 +17,55 @@ public class FS {
         this.ficheros = new LinkedList<Archivo>();
 
         final File folder = new File(this.ruta);
-        for (final File fileEntry : folder.listFiles()) {
-            String tipo = (fileEntry.isFile()) ? "fa-file-o" : "fa-folder";
-            this.ficheros.add(new Archivo(this.ruta,fileEntry.getName(), tipo));
+        String tipo = null;
+        String nombreFichero = null;
+
+        if (folder.isDirectory()) {
+            for (final File fileEntry : folder.listFiles()) {
+                tipo = (fileEntry.isFile()) ? "fa-file-o" : "fa-folder";
+                nombreFichero = fileEntry.getName();
+                ruta = (ruta.equals("/")) ? "" : ruta;
+                this.ficheros.add(new Archivo(this.ruta, nombreFichero, tipo, ruta + "/" + nombreFichero, ""));
+            }
+        } else {
+            BufferedReader br = null;
+            FileReader fr = null;
+
+            try {
+
+                //br = new BufferedReader(new FileReader(FILENAME));
+                fr = new FileReader(ruta);
+                br = new BufferedReader(fr);
+
+                String sCurrentLine;
+                String contenido = "";
+
+                while ((sCurrentLine = br.readLine()) != null) {
+                    contenido += sCurrentLine + "</br>";
+                }
+                this.ficheros.add(new Archivo(this.ruta, nombreFichero, tipo, ruta + "/" + nombreFichero, contenido));
+
+            } catch (IOException e) {
+
+                e.printStackTrace();
+
+            } finally {
+
+                try {
+
+                    if (br != null)
+                        br.close();
+
+                    if (fr != null)
+                        fr.close();
+
+                } catch (IOException ex) {
+
+                    ex.printStackTrace();
+
+                }
+
+            }
         }
     }
 
