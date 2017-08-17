@@ -10,13 +10,13 @@ public class FS {
     private final List<Archivo> ficheros;
 
     public FS(String ruta) {
-        this.ruta = ruta;
+        this.ruta = "/"+ruta.substring(0,ruta.length()-1);
         this.ficheros = new LinkedList<Archivo>();
 
-        final File folder = new File("/");
+        final File folder = new File("/"+ruta);
         for (final File fileEntry : folder.listFiles()) {
-            char tipo = (fileEntry.isFile()) ? 'f' : 'd';
-            this.ficheros.add(new Archivo(ruta,fileEntry.getName(), tipo));
+            String tipo = (fileEntry.isFile()) ? "fa-file-o" : "fa-folder";
+            this.ficheros.add(new Archivo("/"+ruta,fileEntry.getName(), tipo));
         }
     }
 

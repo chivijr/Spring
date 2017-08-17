@@ -4,9 +4,9 @@ public class Archivo {
 
     private final String ruta;
     private final String nombre;
-    private final char tipo;
+    private final String tipo;
 
-    public Archivo(String ruta, String nombre, char tipo) {
+    public Archivo(String ruta, String nombre, String tipo) {
         this.ruta = ruta;
         this.nombre = nombre;
         this.tipo = tipo;
@@ -20,7 +20,7 @@ public class Archivo {
         return nombre;
     }
 
-    public char getTipo() {
+    public String getTipo() {
         return tipo;
     }
 }
