@@ -14,6 +14,6 @@ public class FSController {
     @RequestMapping("/fs")
     public FS fs(@RequestParam(value = "dir", defaultValue = "") String dir) {
 
-        return new FS(dir+"/");
+        return new FS("/"+dir);
     }
 }
