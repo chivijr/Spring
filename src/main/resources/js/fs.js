@@ -17,7 +17,7 @@ $(document).ready(function() {
     }).then(function(data) {
     	$('#cabecera').append("<h1>Ruta: "+data.ruta+"</h1></br>");
     	$.each( data.ficheros, function( key, val ) {
-    		var $li = $("<li id=\"elemento\" class=\""+val.tipo+"\"><a href='"+"http://localhost:8081/?dir="+val.rutaAbsoluta+"'>"+val.rutaAbsoluta+"</a></li>");      
+    		var $li = $("<li id=\"elemento\" class=\""+val.tipo+"\"><a href='"+"http://localhost:8081/?dir="+val.rutaAbsoluta+"'>"+val.rutaAbsoluta+" -> Tamaño: "+Math.floor(val.tamanio/1025)+" KB.</a></li>");      
  			$("#lista").append($li);            
  			if (val.contenido != "" && val.contenido != null) {
  				$('#elemento').remove();

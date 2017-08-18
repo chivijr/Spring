@@ -7,13 +7,15 @@ class Archivo {
     private final String tipo;
     private final String rutaAbsoluta;
     private final String contenido;
+    private final Long tamanio;
 
-    public Archivo(String ruta, String nombre, String tipo, String rutaAbsoluta, String contenido) {
+    public Archivo(String ruta, String nombre, String tipo, String rutaAbsoluta, String contenido, Long tamanio) {
         this.ruta = ruta;
         this.nombre = nombre;
         this.tipo = tipo;
         this.rutaAbsoluta = rutaAbsoluta;
         this.contenido = contenido;
+        this.tamanio = tamanio;
     }
 
     public String getContenido() {
@@ -34,5 +36,9 @@ class Archivo {
 
     public String getRutaAbsoluta() {
         return rutaAbsoluta;
+    }
+
+    public Long getTamanio() {
+        return tamanio;
     }
 }

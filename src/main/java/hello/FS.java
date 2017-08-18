@@ -25,7 +25,7 @@ public class FS {
                 tipo = (fileEntry.isFile()) ? "fa-file-o" : "fa-folder";
                 nombreFichero = fileEntry.getName();
                 ruta = (ruta.equals("/")) ? "" : ruta;
-                this.ficheros.add(new Archivo(this.ruta, nombreFichero, tipo, ruta + "/" + nombreFichero, ""));
+                this.ficheros.add(new Archivo(this.ruta, nombreFichero, tipo, ruta + "/" + nombreFichero, "", fileEntry.length()));
             }
         } else {
             BufferedReader br = null;
@@ -43,7 +43,7 @@ public class FS {
                 while ((sCurrentLine = br.readLine()) != null) {
                     contenido += sCurrentLine + "</br>";
                 }
-                this.ficheros.add(new Archivo(this.ruta, nombreFichero, tipo, ruta + "/" + nombreFichero, contenido));
+                this.ficheros.add(new Archivo(this.ruta, nombreFichero, tipo, ruta + "/" + nombreFichero, contenido, (long) 0));
 
             } catch (IOException e) {
 
