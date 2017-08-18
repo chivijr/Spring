@@ -1,6 +1,6 @@
 package hello;
 
-public class Archivo {
+class Archivo {
 
     private final String ruta;
     private final String nombre;
